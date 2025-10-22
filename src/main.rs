@@ -1,38 +1,33 @@
-use std::cmp::Ordering;
-use std::io;
-
-use rand::Rng;
-
 fn main() {
-    println!("Guess the number!");
+    // Mutable variable example
+    let mut x = 5;
+    println!("The value of x is: {x}");
+    x = 6;
+    println!("The value of x is: {x}");
 
-    let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
+    // Constant example
+    const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+    println!("Three hours in seconds: {THREE_HOURS_IN_SECONDS}");
 
-    // println!("The secret number is: {secret_number}");
+    // Shadowing example
+    let y = 5;
 
-    loop {
-        println!("Please input your guess.");
+    let y = y + 1;
 
-        let mut guess = String::new();
-
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("You guessed: {guess}");
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
-        }
+    {
+        let y = y * 2;
+        println!("The value of y in the inner scope is: {y}");
     }
+
+    println!("The value of y is: {y}");
+
+    // Shadowing with different types
+    let spaces = "   ";
+    let spaces = spaces.len();
+    println!("The number of spaces is: {spaces}");
+
+    let mut z = 10;
+    println!("The value of z is: {z}");
+    // z = "20";
+    println!("The value of z is: {z}");
 }
