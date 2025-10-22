@@ -51,4 +51,16 @@ fn main() {
     let z: char = 'ℤ';
     let heart_eyed_cat = '😻';
     println!("Characters: {}, {}, {}", c, z, heart_eyed_cat);
+
+    // Tuple types
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    let (x, y, z) = tup;
+    println!("Tuple values: x: {}, y: {}, z: {}", x, y, z);
+    println!("Accessing tuple directly: tup.0: {}, tup.1: {}, tup.2: {}", tup.0, tup.1, tup.2);
+
+    // Array types
+    let arr: [i32; 5] = [1, 2, 3, 4, 5];
+    let first = arr[0];
+    let second = arr[1];
+    println!("Array elements: first: {}, second: {}", first, second);
 }
